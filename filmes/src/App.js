@@ -1,6 +1,11 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import React from 'react'
 
+// Pages
+import Home from './pages/home'
+import Planos from './pages/planos'
+import Sobre from './pages/sobre'
+
 function App() {
   return (
     <Router>
@@ -14,9 +19,9 @@ function App() {
       </div>      
       {/* Definindo as rotas de aplicação */}
       <Routes>
-        <Route path='/' element={<h1>Home</h1>}/>
-        <Route path='/planos' element={<h1>Planos</h1>}/>
-        <Route path='/sobre' element={<h1>Sobre</h1>}/>
+        <Route path='/' element={<Home></Home>}/>
+        <Route path='/planos' element={<Planos></Planos>}/>
+        <Route path='/sobre' element={<Sobre></Sobre>}/>
         <Route path='/detalhes' element={<h1>Detalhes</h1>}/>
         <Route path='*' element={<h1>Página Não Encontrada!</h1>} />
       </Routes>
