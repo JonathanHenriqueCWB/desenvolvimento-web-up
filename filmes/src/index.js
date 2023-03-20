@@ -4,16 +4,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-import Menu from './components/Menu/Menu'
-import Card from './components/Card/Card'
-import Footer from './components/Footer/Footer'
+import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Menu />
-    <Card />
-    <Footer />
+    <App />
   </React.StrictMode>
 );
 
