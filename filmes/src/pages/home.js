@@ -1,10 +1,10 @@
 import React from 'react'
+import Card from '../components/Card/Card'
 
 const Home = props => {
     return (
         <>
-            <h1>Home page</h1>
-            <p>Página raiz da aplicação</p>
+            <Card></Card>
         </>
     )
 }

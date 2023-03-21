@@ -1,10 +1,7 @@
 import React from "react";
 import './Footer.css'
 
-const style ={ 
-    "backgroundColor" : "#222",
-    "marginTop" : "50px"
-}
+const style ={ "backgroundColor" : "#222", "marginTop" : "50px" }
 
 const Footer = props => {
     return (

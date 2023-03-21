@@ -2,14 +2,9 @@ import React from 'react'
 import './Card.css'
 import filmes from '../../data/filmes'
 
-
 const Card = props => {
     
-    const cardStyle = {
-        "minWidth" : "19rem",
-        "maxWidth" : "19rem",
-        "marginBottom" : "10px"
-    }
+    const cardStyle = { "minWidth" : "19rem", "maxWidth" : "19rem", "marginBottom" : "10px" }
 
     return (        
         <div className="container text-center">
@@ -22,12 +17,11 @@ const Card = props => {
                                 <p class="card-text">Tempo estimado: {f.duracao}</p>
                                 <p class="card-text">Genero: {f.genero}</p>
                                 <p className="card-text">Nota: {f.nota}</p>
-                                <a href={`/detalhes/${f.nome}`} class="btn btn-dark">Ver mais...</a>
+                                <a href={`/detalhes/${f.id}`} class="btn btn-dark">Ver mais...</a>
                             </div>
                         </div> 
                     </div>
                 )}
-
             </div>
         </div>
     )
