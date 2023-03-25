@@ -1,6 +1,7 @@
 const filmes = [
     {
         "id" : 0,
+        "assistido": true,
         "nome" : "Vingadores Ultimato",
         "duracao" : "2:30H",
         "foto" : "vingadores.png",
@@ -12,6 +13,7 @@ const filmes = [
     },
     {
         "id" : 1,
+        "assistido": false,
         "nome" : "Gato de botas 2",
         "duracao" : "2:30H",
         "foto" : "gato-de-botas.jpg",
@@ -23,6 +25,7 @@ const filmes = [
     },
     {
         "id" : 2,
+        "assistido": true,
         "nome" : "Jujutsu Kaisen 0",
         "duracao" : "2:30H",
         "foto" : "jujutsu-kaisen-0.jpg",
@@ -34,6 +37,7 @@ const filmes = [
     },
     {
         "id" : 3,
+        "assistido": false,
         "nome" : "invocacao do mal",
         "duracao" : "2:30H",
         "foto" : "invocacao-do-mal.jpg",
@@ -45,6 +49,7 @@ const filmes = [
     },
     {
         "id" : 4,
+        "assistido": false,
         "nome" : "Vingadores Ultimato",
         "duracao" : "2:30H",
         "foto" : "vingadores.png",
@@ -55,7 +60,8 @@ const filmes = [
         "nota" : "9",
     },
     {
-        "id" : 6,
+        "id" : 5,
+        "assistido": false,
         "nome" : "Jujutsu Kaisen 0",
         "duracao" : "2:30H",
         "foto" : "jujutsu-kaisen-0.jpg",
@@ -66,7 +72,8 @@ const filmes = [
         "nota" : "7",
     },    
     {
-        "id" : 7,
+        "id" : 6,
+        "assistido": true,
         "nome" : "invocacao do mal",
         "duracao" : "2:30H",
         "foto" : "invocacao-do-mal.jpg",
@@ -77,7 +84,8 @@ const filmes = [
         "nota" : "9",
     },
     {
-        "id" : 5,
+        "id" : 7,
+        "assistido": false,
         "nome" : "Gato de botas 2",
         "duracao" : "2:30H",
         "foto" : "gato-de-botas.jpg",

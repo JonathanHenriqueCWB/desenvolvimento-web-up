@@ -1,10 +1,10 @@
 import React from 'react'
 
+import Title from '../components/Title/Title'
+
 const Sobre = props => {
     return (
-        <>
-            <h1>Página sobre</h1>
-            <p>Página sobre assuntos especifico</p>
+        <>  <Title title="Sobre nós" text="Conheça um pouco mais sobre a gente" />
         </>
     )
 }
