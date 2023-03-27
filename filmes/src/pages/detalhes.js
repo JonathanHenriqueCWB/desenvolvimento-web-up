@@ -3,26 +3,18 @@ import { useParams } from 'react-router-dom'
 import filmes from '../data/filmes'
 
 import Title from '../components/Title/Title'
+import Card from '../components/Card/Card'
 
 const Detalhes = props => {
     
     const { id } = useParams()
+    const filme = filmes.filter(f => f.id === parseInt(id))
+    const estilo = {"width" : "80rem"}
 
     return (
-        <div className="container text-center" style={{width: "65rem"}}>
-            <Title title="Página de detalhes" text="Confira agora mesmo"/>
-            <div className="row">                  
-                <div className="col">
-                    <div className="card">                            
-                        <div className="card-body">
-                            <p>Nome: {filmes[id].nome}</p>
-                            <p>Genero: {filmes[id].genero} Ano: {filmes[id].ano} Duração: {filmes[id].duracao} Nota: {filmes[id].nota}</p>
-                            <p>{filmes[id].descricao}</p>
-                        </div>
-                        <img src={'/assets/images/' + filmes[id].banner} alt={filmes[id].nome} className="card-img-top" />
-                    </div> 
-                </div>
-            </div>
+        <div className='container'>
+            <Title title="Confira agora" text="Detalhes do filme abaixo"></Title>
+            <Card filme={filme} estilo={estilo}></Card>
         </div>
     )
 }

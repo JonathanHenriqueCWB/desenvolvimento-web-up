@@ -48,7 +48,6 @@ const Planos = props => {
                     </div>
                 </div>                
             </div>
-
         </div>
     )
 }

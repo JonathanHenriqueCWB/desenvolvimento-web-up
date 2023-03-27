@@ -9,7 +9,7 @@ import Detalhes from './pages/detalhes'
 export default function ConfigRoutes(){
     return (
         <Routes>
-          <Route path='/' element={<Home></Home>}/>
+          <Route path='/' element={<Home></Home>}/> { /* root */ }
           <Route path='/planos' element={<Planos></Planos>}/>
           <Route path='/sobre' element={<Sobre></Sobre>}/>
           <Route path='/detalhes/:id' element={<Detalhes></Detalhes>}/>
