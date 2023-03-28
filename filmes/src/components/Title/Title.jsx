@@ -7,8 +7,8 @@ const Title = props => {
     
     return (
         <div className="container">
-            <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style={{color: "#ccc"}}>
-                <h1 className="display-4">{title}</h1>
+            <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style={{color: "#fff"}}>
+                <p className="display-6">{title}</p>
                 <p className="lead">{text}</p>
             </div>
         </div>
