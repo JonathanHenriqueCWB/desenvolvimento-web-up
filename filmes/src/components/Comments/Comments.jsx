@@ -1,4 +1,6 @@
 import React from 'react'
+///import avatar from './assets/images/avatar/a1.png'
+// import avatar from './logo.svg';
 
 const Comments = props => {
 
@@ -6,8 +8,8 @@ const Comments = props => {
     const resultado = comentarios.comentario.map((comment, i) => {
         return <div>
             <div key={i.toString()}>
-                <span>por imagem auqi</span>
-                <span>{comment.user}</span>
+                    <img src={'/assets/images/avatar/' + comment.foto} alt={comment.foto} width={40}/>
+                    <span style={{fontSize: "20px", marginLeft: "10px"}}>{comment.user}</span>
             </div>
             <div key={i.toString()}>
                 <div style={{textIndent: "50px"}}>{comment.comentario}</div>
@@ -17,9 +19,8 @@ const Comments = props => {
     })
 
     return (
-        <div style={{color: "#ffbf00"}}>
+        <div style={{color: "#ffbf00", background: "#222", marginTop: "50px", borderRadius: "10px", padding: "80px"}}>
             <div className='text-center'>
-                <br /><br />
                 <h3>{comentarios.filme}</h3>
             </div>
             <div>

@@ -3,16 +3,19 @@ const comments = [
         "filme" : "Vingadores Ultimato",
         "comentario" : [
             {
-                'user' : 'jony',
-                'comentario' : 'Filme muito bom...'
+                'user' : 'Jony',
+                'comentario' : 'Filme muito bom...',
+                'foto' : 'a1.png'
             },
             {
-                'user' : 'jose',
-                'comentario' : 'Adorei o filme'
+                'user' : 'Jose',
+                'comentario' : 'Adorei o filme',
+                'foto' : 'a3.png'
             },
             {
-                'user' : 'amanda',
-                'comentario' : 'Superou minhas espectativas'
+                'user' : 'Amanda',
+                'comentario' : 'Superou minhas espectativas',
+                'foto' : 'a5.png'
             }
         ]
     },
@@ -20,16 +23,19 @@ const comments = [
         "filme" : "Gato de botas 2",
         "comentario" : [
             {
-                'user' : 'antoni',
-                'comentario' : 'Filme muito bom...'
+                'user' : 'Antoni',
+                'comentario' : 'Filme muito bom...',
+                'foto' : 'a1.png'
             },
             {
-                'user' : 'jose',
-                'comentario' : 'Adorei o filme'
+                'user' : 'Jose',
+                'comentario' : 'Adorei o filme',
+                'foto' : 'a3.png'
             },
             {
-                'user' : 'amanda',
-                'comentario' : 'Superou minhas espectativas'
+                'user' : 'Amanda',
+                'comentario' : 'Superou minhas espectativas',
+                'foto' : 'a5.png'
             }
         ]
     },
@@ -37,16 +43,19 @@ const comments = [
         "filme" : "Jujutsu Kaisen 0",
         "comentario" : [
             {
-                'user' : 'marcos',
-                'comentario' : 'Filme muito bom...'
+                'user' : 'Marcos',
+                'comentario' : 'Filme muito bom...',
+                'foto' : 'a1.png'
             },
             {
-                'user' : 'jose',
-                'comentario' : 'Adorei o filme'
+                'user' : 'Jose',
+                'comentario' : 'Adorei o filme',
+                'foto' : 'a3.png'
             },
             {
-                'user' : 'amanda',
-                'comentario' : 'Superou minhas espectativas'
+                'user' : 'Amanda',
+                'comentario' : 'Superou minhas espectativas',
+                'foto' : 'a5.png'
             }
         ]
     },
@@ -54,16 +63,19 @@ const comments = [
         "filme" : "invocacao do mal",
         "comentario" : [
             {
-                'user' : 'antoni',
-                'comentario' : 'Filme muito bom...'
+                'user' : 'Antoni',
+                'comentario' : 'Filme muito bom...',
+                'foto' : 'a1.png'
             },
             {
-                'user' : 'jose',
-                'comentario' : 'Adorei o filme'
+                'user' : 'Jose',
+                'comentario' : 'Adorei o filme',
+                'foto' : 'a3.png'
             },
             {
-                'user' : 'amanda',
-                'comentario' : 'Superou minhas espectativas'
+                'user' : 'Amanda',
+                'comentario' : 'Superou minhas espectativas',
+                'foto' : 'a5.png'
             }
         ]
     }

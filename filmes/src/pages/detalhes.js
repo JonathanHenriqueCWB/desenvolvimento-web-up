@@ -11,7 +11,7 @@ import Comments from '../components/Comments/Comments'
 const Detalhes = props => {
     
     const { id } = useParams()
-    const estilo = {"width" : "80rem"}
+    const estilo = {"width" : "80.5rem"}
     
     const filme = filmes.filter(f => f.id === parseInt(id))
     const comentario = todosComentarios.filter(c => c.filme === filme[0].nome)
