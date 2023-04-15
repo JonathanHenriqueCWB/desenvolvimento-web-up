@@ -1,12 +1,12 @@
 import React from 'react'
 import './App.css'
 
-import Gallery from './components/useState/Gallery'
+import UseEfect from './components/useEfect/UseEfect'
 
 function App () {
   return (
     <div className='App'>
-      <Gallery />
+      <UseEfect />
     </div>
   )
 }
