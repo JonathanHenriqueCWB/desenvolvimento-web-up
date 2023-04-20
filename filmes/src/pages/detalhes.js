@@ -9,6 +9,8 @@ import Card from '../components/Card/Card'
 import Comments from '../components/Comments/Comments'
 
 const Detalhes = props => {
+
+    // Puxar o filme da API aqui e manda como objeto para o componente
     
     const { id } = useParams()
     const estilo = {"width" : "80.5rem"}
