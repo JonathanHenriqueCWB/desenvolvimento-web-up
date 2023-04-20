@@ -1,12 +1,12 @@
 import React from 'react'
 import './App.css'
 
-import UseEfect from './components/useEfect/UseEfect'
+import CarregarPost from  './components/useEffectApi/CarregarPost'
 
 function App () {
   return (
     <div className='App'>
-      <UseEfect />
+      <CarregarPost />
     </div>
   )
 }

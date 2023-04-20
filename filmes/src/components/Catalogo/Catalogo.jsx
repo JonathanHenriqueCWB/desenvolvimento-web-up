@@ -1,11 +1,16 @@
 import React from 'react'
+import {useState, useCallback} from 'react'
 import './Catalogo.css'
 import filmes from '../../data/filmes'
 
 const Assistido = props => props.javisto? <p className='text-success'>Filme já visto</p> : <p className='text-danger'>Ainda não visto</p>
 
-const Card = props => {    
+const Card = props => {
+
     const cardStyle = { "minWidth" : "19rem", "maxWidth" : "19rem", "marginBottom" : "10px" }
+    const [listaPosts, setListaPost] = useState()
+
+
     return (        
         <div className="container text-center">
             <div className="row">
