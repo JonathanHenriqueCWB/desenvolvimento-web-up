@@ -8,7 +8,7 @@ const Assistido = props => props.javisto? <p className='text-success'>Filme já 
 const Card = props => {
 
     const cardStyle = { "minWidth" : "19rem", "maxWidth" : "19rem", "marginBottom" : "10px" }
-    const [listaFilmes, setListaFilmes] = useState()
+    const [listaFilmes, setListaFilmes] = useState([])
 
     useEffect(() => {
         fetch('https://my-json-server.typicode.com/marycamila184/movies/movies')
