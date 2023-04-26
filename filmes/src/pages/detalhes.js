@@ -2,12 +2,12 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 
 // Data
-import todosComentarios from '../data/comments'
+// import todosComentarios from '../data/comments'
 
 // Components
 import Title from '../components/Title/Title'
 import Card from '../components/Card/Card'
-import Comments from '../components/Comments/Comments'
+// import Comments from '../components/Comments/Comments'
 
 const Detalhes = props => {
     
