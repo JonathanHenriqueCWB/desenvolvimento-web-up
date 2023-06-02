@@ -1,7 +1,12 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1/catalogo').then(() => {
-    console.log('Connected to database successfully')
-}).catch(err => {
-    console.log(`Error connecting to database ${err}`)
-})
+async function Main() {
+    try {        
+        await mongoose.connect('mongodb://127.0.0.1/catalogo')
+        console.log('Conectado ao banco de dados com sucesso')
+    } catch (error) {
+        console.log('Erro ao conectar ao banco de dados' + error)
+    }
+}
+
+module.exports = Main

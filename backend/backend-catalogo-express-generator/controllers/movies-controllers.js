@@ -7,12 +7,12 @@ class MovieController {
         await Movie.find().lean().then(filmes => {
             res.send(filmes)
         }).catch(err => {
-            res.send('Lista de filmes vazias')
+            res.send('Erro ao carregar lista de filmes')
         })
     }
 
     // CREATE
-    async read(req, res){        
+    async create(req, res){        
         let newMovie = {
             nome: req.body.nome,
             description: req.body.description

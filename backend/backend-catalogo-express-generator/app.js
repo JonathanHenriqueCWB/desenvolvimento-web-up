@@ -1,21 +1,24 @@
-var createError = require('http-errors');
 var express = require('express');
+var app = express();
+
+var createError = require('http-errors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-// Rotas da palicação
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var moviesRouter = require('./routes/movies')
+// Conexão banco de dados
+const Conn = require('./database/config')
+Conn()
 
-var app = express();
-
-// Import da configuração e schema do banco de dados
-require('./database/config')
+// Models
 require('./model/Movies')
+require('./model/Assinantes')
 
-// view engine setup
+// Routes
+const routes = require('./routes/router')
+app.use('/api', routes)
+
+// view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -24,10 +27,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/movies', moviesRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,3 +45,5 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+// https://www.youtube.com/watch?v=anMK76I2dUA
