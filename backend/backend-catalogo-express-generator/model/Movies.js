@@ -1,10 +1,11 @@
 const Mongoose = require('mongoose')
 
 const todoSchema = new Mongoose.Schema({
-    nome: {type: String, require: true},
-    description: { type: String, require: true },
-    done: { type: Boolean, require: true, default: false },
-    createdAt: { type: Date, default: Date.now }
+    titulo: {type: String, require: true},
+    ano: { type: String, require: true },
+    nota: { type: String, require: true },
+    sinopse: {type: String},
+    assistido: {type: String}
 }, {timestamps: true})
 
 const Movie = Mongoose.model('Movies', todoSchema)

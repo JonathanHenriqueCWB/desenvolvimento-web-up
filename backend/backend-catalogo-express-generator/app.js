@@ -15,8 +15,14 @@ require('./model/Movies')
 require('./model/Assinantes')
 
 // Routes
-const routes = require('./routes/router')
-app.use('/api', routes)
+var indexRouter = require('./routes/index-route');
+var moviesRouter = require('./routes/movies-route')
+var assinanteRouter = require('./routes/assinantes-route')
+
+// Cria um prefixo para as rotas
+app.use('/', indexRouter);
+app.use('/movies', moviesRouter)
+app.use('/assinantes', assinanteRouter)
 
 // view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -46,4 +52,4 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-// https://www.youtube.com/watch?v=anMK76I2dUA
+// 
