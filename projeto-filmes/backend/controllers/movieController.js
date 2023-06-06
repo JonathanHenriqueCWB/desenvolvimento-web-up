@@ -76,7 +76,6 @@ const movieController = {
             console.log(error)
         }
     }
-
 }
 
 module.exports = movieController

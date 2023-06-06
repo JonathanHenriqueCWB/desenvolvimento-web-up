@@ -4,11 +4,13 @@ const router = require('express').Router()
 const movieRouter = require('./movieRoute')
 const assinanteRouter = require('./assinanteRoute')
 const enderecoRouter = require('./enderecoRoute')
+const cartaoRouter = require('./cartoaRoute')
 
 // Prefixo para as rotas
 router.use('/movies', movieRouter)
 router.use('/assinantes', assinanteRouter)
 router.use('/endereco', enderecoRouter)
+router.use('/cartao', cartaoRouter)
 
 module.exports = router
 
