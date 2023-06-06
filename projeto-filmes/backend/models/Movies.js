@@ -6,8 +6,11 @@ const movieSchema = new Schema({
     ano: {type: String},
     nota: {type: Number},
     sinopse: {type: String},
-    assistido: {type: Boolean}
+    img: { type: String },
+    assistido: {type: String}
 }, { timestamps: true })
 
 const Movie = mongoose.model('Movie', movieSchema)
 module.exports = Movie
+
+// img: { data: Buffer, contentType: String },

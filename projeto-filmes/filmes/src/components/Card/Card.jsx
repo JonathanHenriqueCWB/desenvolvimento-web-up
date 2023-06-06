@@ -16,7 +16,7 @@ const Card = props => {
 
     return (
         <div className='card-group' style={props.estilo}>
-            <img src={filme.poster} alt={filme.titulo} className="card-img-top" style={{width: "29rem"}} />
+            <img src={filme.img} alt={filme.titulo} className="card-img-top" style={{width: "29rem"}} />
             <div className="card">                            
                 <div className="card-body">
                     <p>TITULO: {filme.titulo}</p>

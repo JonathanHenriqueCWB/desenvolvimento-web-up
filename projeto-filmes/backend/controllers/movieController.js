@@ -1,4 +1,5 @@
 const MovieModel = require("../models/Movies")
+const upload = require('../config/multer')
 
 const movieController = {
     
@@ -9,9 +10,10 @@ const movieController = {
                 filme.ano = req.body.ano
                 filme.nota = req.body.nota
                 filme.sinopse = req.body.sinopse
+                filme.img = req.body.img
                 filme.assistido = req.body.assistido
                 filme.save().then(() => {
-                    res.status(201).json({response, msg: "Filme alterado com sucesso"})
+                    res.status(200).json({response, msg: "Filme alterado com sucesso"})
                 })
             }).catch(err => {
                 res.json({msg: 'Erro ao alterar filme'})
@@ -43,7 +45,6 @@ const movieController = {
                 res.status(404).json({msg: "Filme não encontrado"})
                 return
             }
-
             res.json(response)
         } catch (error) {
             console.log(error)
@@ -53,7 +54,7 @@ const movieController = {
     readAll: async(req, res) => {
         try {
             const response = await MovieModel.find()
-            res.json(response)
+            res.status(200).json(response)
         } catch(error){
             console.log(error)
         }
@@ -66,6 +67,7 @@ const movieController = {
                ano: req.body.ano,
                nota: req.body.nota,
                sinopse: req.body.sinopse,
+               img: req.body.img,
                assistido: req.body.assistido 
             }
             const response = await MovieModel.create(movie)

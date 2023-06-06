@@ -24,7 +24,7 @@ const Header = props => {
         </li>
 
         {
-            location.pathname == '/cadastrar' ? <li></li> : <li className="nav-item"> <Link className='nav-link' to='/cadastrar' style={{color: "#fff"}}>CADASTRAR</Link></li> 
+            location.pathname === '/cadastrar' ? <li></li> : <li className="nav-item"> <Link className='nav-link' to='/cadastrar' style={{color: "#fff"}}>CADASTRAR</Link></li> 
         }
         
     </ul>

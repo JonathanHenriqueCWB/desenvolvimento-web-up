@@ -3,11 +3,11 @@ import React from 'react'
 const Planos = props => {
     return (
         <div className="container">        
-            <img src={'/assets/images/planos-banner.png'}  className="card-img-top" />
+            <img src={'/assets/images/planos-banner.png'}  className="card-img-top" alt="img-planos" />
             <div className="row row-cols-1 row-cols-md-3 g-4" style={{marginTop: "10px"}}>
                 <div className="col">
                     <div className="card h-100">
-                    <img src={'/assets/images/planos.png'}  className="card-img-top" />
+                    <img src={'/assets/images/planos.png'}  className="card-img-top" alt='img-planos' />
                     <div className="card-body">
                         <h5 className="card-title">1 Tela</h5>
                         <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -19,7 +19,7 @@ const Planos = props => {
                 </div>
                 <div className="col">
                     <div className="card h-100">
-                    <img src={'/assets/images/planos.png'}  className="card-img-top" />
+                    <img src={'/assets/images/planos.png'}  className="card-img-top" alt='img planos' />
                     <div className="card-body">
                         <h5 className="card-title">3 Telas</h5>
                         <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -31,7 +31,7 @@ const Planos = props => {
                 </div>
                 <div className="col">
                     <div className="card h-100">
-                    <img src={'/assets/images/planos.png'}  className="card-img-top" />''
+                    <img src={'/assets/images/planos.png'}  className="card-img-top" alt='img-planos' />''
                     <div className="card-body">
                         <h5 className="card-title">5 Telas</h5>
                         <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>

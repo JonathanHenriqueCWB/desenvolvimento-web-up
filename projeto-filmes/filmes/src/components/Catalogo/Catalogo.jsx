@@ -12,7 +12,7 @@ const Card = props => {
                     {props.lista.map(f =>                    
                         <div className="col">
                             <div className="card" style={ cardStyle }>                            
-                                <img src={f.poster} alt={f.titulo} className="card-img-top" style={{height: '380px'}} />
+                                <img src={f.img} alt={f.titulo} className="card-img-top" style={{height: '380px'}} />
                                 <div className="card-body">
                                     <p className="card-text">Nome: {f.titulo}</p>
                                     <p className="card-text">Ano: {f.ano}</p>

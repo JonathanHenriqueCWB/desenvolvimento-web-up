@@ -9,9 +9,6 @@ const assinanteController = {
                 assinante.sobrenome = req.body.sobrenome
                 assinante.dataNascimento = req.body.dataNascimento
                 assinante.telefone = req.body.telefone
-                assinante.endereco = req.body.endereco
-                assinante.cidade = req.body.cidade
-                assinante.estado = req.body.estado
                 assinante.status = req.body.status
                 assinante.save().then(() => {
                     res.status(201).json({response, msg: "Assinante alterado com sucesso"})
@@ -67,9 +64,6 @@ const assinanteController = {
                 sobrenome: req.body.sobrenome,
                 dataNascimento: req.body.dataNascimento,
                 telefone: req.body.telefone,
-                endereco: req.body.endereco,
-                cidade: req.body.cidade,
-                estado: req.body.estado,
                 status: req.body.status
             }
             const response = await AssinanteController.create(assinante)
@@ -78,7 +72,7 @@ const assinanteController = {
             console.log(error)
         }
     }
-
 }
 
+// https://static.vecteezy.com/ti/vetor-gratis/p1/2275847-avatar-masculino-perfil-icone-de-homem-caucasiano-sorridente-vetor.jpg
 module.exports = assinanteController
