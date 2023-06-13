@@ -2,11 +2,14 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const clienteSchema = new Schema({
-    codigo : {type: Number},
-    avatar: {type: String},
+    codigo : {type: String},
     nome: {type: String},
     sobrenome: {type: String},
     cpf: {type: String},    
+    foto: {
+        data: Buffer,
+        contentType: String
+    },
 
     endereco: {type: String},
     cidade: {type: String},

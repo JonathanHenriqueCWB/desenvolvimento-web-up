@@ -1,11 +1,13 @@
 const {Cliente : ClienteController} = require('../models/Cliente')
+var fs = require('fs');
+var path = require('path');
 
 const clienteController = {
    update: async(req, res) => {
        try {
            const response = await ClienteController.findById(req.body._id).then(cliente => {        
             cliente.codigo = req.body.codigo,
-            cliente.avatar =req.body.avatar,
+            cliente.foto =req.body.foto,
             cliente.nome = req.body.nome,
             cliente.sobrenome = req.body.sobrenome,
             cliente.cpf = req.body.cpf,    
@@ -60,23 +62,27 @@ const clienteController = {
        } catch (error) {
            console.log(error)
        }
-   },
-
-    create: async(req, res) => {
+    },
+    
+    create: async(req, res) => { 
         try {
             const cliente = {
                 codigo : req.body.codigo,
-                avatar: req.body.avatar,
                 nome: req.body.nome,
                 sobrenome: req.body.sobrenome,
-                cpf: req.body.cpf,    
+                cpf: req.body.cpf,
+                foto: {
+                    data: fs.readFileSync(path.join(__dirname + './../uploads/' + req.file.filename)),
+                    contentType: 'image/png'
+                },
                 endereco: req.body.endereco,
                 cidade: req.body.cidade,
-                estado: req.body.estado,                
+                estado: req.body.estado,
                 cartao: req.body.cartao,
                 email: req.body.email,
-                senha: req.body.senha,
+                senha: req.body.senha
             }
+            
             const response = await ClienteController.create(cliente)
             res.status(201).json({response, msg: "Cliente cadastrado com sucesso"})
         } catch (error) {
