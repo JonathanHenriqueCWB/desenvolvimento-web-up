@@ -5,13 +5,16 @@ const { Schema } = mongoose
 const {categoriaSchema} = require('./Categoria')
 
 const produtoSchema = new Schema({
-    codigo: {type: Number},
+    codigo: {type: String},
     nome: {type: String},
-    imagem: {type: String},
     descricao: {type: String},
     preco: { type: String },
     animal: {type: String},
-    notaGeral: {type: Number, default: 0},
+    notaGeral: {type: String},
+    foto: {
+        data: Buffer,
+        contentType: String
+    },
     categoria: {type: [categoriaSchema]},
 }, { timestamps: true })
 

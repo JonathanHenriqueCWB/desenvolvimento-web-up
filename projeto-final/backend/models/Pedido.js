@@ -11,6 +11,10 @@ const pedidosSchema = new Schema({
     status: {type: String},
     cliente : {type: [clienteSchema]},
     produto: {type: [produtoSchema]},
+    foto: {
+        data: Buffer,
+        contentType: String
+    }
 }, {timestamps: true})
 
 const Pedido = mongoose.model("Pedido", pedidosSchema)

@@ -1,4 +1,6 @@
 const PedidoModel = require('../models/Pedido')
+var fs = require('fs');
+var path = require('path')
 
 const pedidoController = {
     update: async(req, res) => {
@@ -62,7 +64,11 @@ const pedidoController = {
                 preco: req.body.preco,
                 status: req.body.status,
                 cliente: req.body.cliente,
-                produto: req.body.produto
+                produto: req.body.produto,
+                foto: {
+                    data: fs.readFileSync(path.join(__dirname + './../uploads/' + req.file.filename)),
+                    contentType: 'image/png'
+                }
             }
             const response = await PedidoModel.create(pedido)
             res.status(201).json({response, msg: "Pedido registrado com sucesso"})

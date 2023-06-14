@@ -1,4 +1,6 @@
 const {Produto: ProdutoModel} = require("../models/Produto")
+var fs = require('fs');
+var path = require('path')
 
 const produtoController = {
     update: async(req, res) => {
@@ -64,11 +66,14 @@ const produtoController = {
            const produto = {
               codigo: req.body.codigo,
               nome: req.body.nome,
-              imagem: req.body.imagem,
               descricao: req.body.descricao,
               preco: req.body.preco,
               categoria: req.body.categoria,
-              animal: req.body.animal
+              animal: req.body.animal,
+              foto: {
+                data: fs.readFileSync(path.join(__dirname + './../uploads/' + req.file.filename)),
+                contentType: 'image/png'
+            }
            }
            const response = await ProdutoModel.create(produto)
            res.status(201).json({response, msg: "Produto cadastrado com sucesso"})
