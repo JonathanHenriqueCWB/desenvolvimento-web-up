@@ -8,7 +8,7 @@ const produtoController = {
             const response = await ProdutoModel.findById(req.body._id).then(p => {        
                 p.codigo = req.body.codigo
                 p.nome = req.body.nome
-                p.imagem = req.body.imagem
+                p.foto = req.body.foto
                 p.descricao = req.body.descricao
                 p.preco = req.body.preco
                 p.animal = req.body.animal
