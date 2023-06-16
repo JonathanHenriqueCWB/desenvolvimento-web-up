@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function Header() {
     return (
-    <Navbar bg="success" variant='light' expand="lg">
+    <Navbar bg="success" variant='light' expand="lg" style={{height: '80px', marginBottom: "50px"}}>
         <Container>
             <Navbar.Brand href="#">Navbar</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />

@@ -17,15 +17,15 @@ const Cards = props => {
     return (
         <CardGroup>
             {props.produtos.map(f =>                    
-                <Card style={{ width: '18rem', minWidth: '300px', maxWidth: "300px" }}>
-                    <Card.Img variant="top" src={`data:image/jpeg;base64,${_arrayBufferToBase64(f.foto.data.data)}`} />
+                <Card style={{minWidth: '300px', maxWidth: "300px", margin: '10px', border: '3px solid green', textAlign: 'center', color: "green" }}>
+                    <Card.Img variant="top" src={`data:image/jpeg;base64,${_arrayBufferToBase64(f.foto.data.data)}`} style={{ height: '300px' }} />
                     <Card.Body>
                         <Card.Title>{f.nome}</Card.Title>
                         <Card.Text>{f.codigo}</Card.Text>
                         <Card.Text>{f.descricao}</Card.Text>
                         <Card.Text>{f.preco}</Card.Text>
                         <Card.Text>{f.animal}</Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Button variant="success">Adicionar ao carrinho</Button>
                     </Card.Body>
                     <Card.Footer>
                         <small className="text-muted">Last updated 3 mins ago</small>

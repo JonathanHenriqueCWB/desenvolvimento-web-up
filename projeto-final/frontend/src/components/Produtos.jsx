@@ -12,8 +12,6 @@ const Produtos = props => {
         .catch(err => console.error(err))
     }, [])
 
-    console.log(produtos)
-
     return (
         <div>
             <Card produtos={produtos}/>
