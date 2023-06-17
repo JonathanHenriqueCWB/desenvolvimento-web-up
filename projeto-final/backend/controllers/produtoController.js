@@ -1,6 +1,8 @@
 const {Produto: ProdutoModel} = require("../models/Produto")
 var fs = require('fs');
 var path = require('path')
+const {Categoria : CategoriaModel} = require('../models/Categoria')
+
 
 const produtoController = {
     update: async(req, res) => {
@@ -63,20 +65,35 @@ const produtoController = {
 
    create: async(req, res) => {
        try {
-           const produto = {
-              codigo: req.body.codigo,
-              nome: req.body.nome,
-              descricao: req.body.descricao,
-              preco: req.body.preco,
-              categoria: req.body.categoria,
-              animal: req.body.animal,
-              foto: {
-                data: fs.readFileSync(path.join(__dirname + './../uploads/' + req.file.filename)),
-                contentType: 'image/png'
+            const categoria = await CategoriaModel.find({codigo: req.body.codigoCategoria})
+
+            const produto = {
+                codigo: req.body.codigo,
+                nome: req.body.nome,
+                descricao: req.body.descricao,
+                preco: req.body.preco,
+                categoria: categoria,
+                animal: req.body.animal,
+                foto: {
+                    data: fs.readFileSync(path.join(__dirname + './../uploads/' + req.file.filename)),
+                    contentType: 'image/png'
+                }
             }
-           }
+            
+            // Arrumar
+            /*
+            if(!produto.categoria){
+                res.status(201).json({ msg: "Categoria inexistente"})
+                return
+            }else {
+                res.status(404).json({produto, msg: "Produto salvo com sucesso"})
+                return
+            }
+            */
+
            const response = await ProdutoModel.create(produto)
            res.status(201).json({response, msg: "Produto cadastrado com sucesso"})
+
        } catch (error) {
            console.log(error)
        }
