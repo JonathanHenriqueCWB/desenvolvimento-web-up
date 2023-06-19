@@ -15,3 +15,7 @@ module.exports = main
 // jonathanhenriquecwb
 // pTe0c7JVPzp2j8Lc
 // view ip: https://whatismyipaddress.com/
+
+// bcrypt criar hash da senha para salvar no banco de dados
+// dotenv arquivo de configuração (local não versionado), guarda as chaves da api, dominios db senha do banco... Guarda os dados mais importantes
+// jsonwebtoken manipula o token, criar um token para o usuario e verefica se e valido
