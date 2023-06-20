@@ -40,7 +40,7 @@ async function gerarHash(usuario) {
       return res.status(401).send({ error: 'Token mal formado!' });
     }
   
-    jwt.verify(token, auth.appId, (err, usuario) => {
+    jwt.verify(token, secret, (err, usuario) => {
       if (err) {
         return res.status(401).send({ error: 'Token inválido!' });
       }
