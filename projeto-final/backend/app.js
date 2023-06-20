@@ -8,11 +8,7 @@
 // Conn DB Atlas
     const conn = require('./config/conn')
     conn()
-
-// pacotes para autenticacao 
-    const bcrypt = require('bcrypt')
-    const jwt = require('jsonwebtoken')
-
+    
 // Middleware
     app.use(cors())
     app.use(express.json())

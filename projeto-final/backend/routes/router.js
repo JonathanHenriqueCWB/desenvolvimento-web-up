@@ -5,12 +5,14 @@ const categoriaRouter = require('./categoriaRoute')
 const clienteRouter = require('./clienteRoute')
 const produtoRouter = require('./produtoRoute')
 const pedidoRouter = require('./pedidoRoute')
+const loginRouter = require('./loginRoute')
 
 // Prefixo para as rotas
 router.use('/categoria', categoriaRouter)
 router.use('/cliente', clienteRouter)
 router.use('/produto', produtoRouter)
 router.use('/pedido', pedidoRouter)
+router.use('/login', loginRouter)
 
 module.exports = router
 

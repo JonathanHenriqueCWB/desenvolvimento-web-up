@@ -1,6 +1,7 @@
 const {Cliente : ClienteModel} = require('../models/Cliente')
 var fs = require('fs');
 var path = require('path');
+const auth = require('../config/auth')
 
 const clienteController = {
    update: async(req, res) => {
@@ -32,9 +33,7 @@ const clienteController = {
        try {
            const response = await ClienteModel.findById(req.params.id)
            if(!response){
-                console.log(response)
-               res.status(404).json({msg: "Cliente não existe"})
-               return
+               return res.status(404).json({msg: "Cliente não existe"})
            }
            const deleteResponse = await ClienteModel.findByIdAndDelete({_id: req.params.id})
            res.status(200).json({deleteResponse, msg: "Cliente removido com sucesso"})
@@ -47,8 +46,7 @@ const clienteController = {
        try {
            const response = await ClienteModel.find({codigo: req.params.codigo})
            if(!response[0]){
-               res.status(404).json({msg: "Cliente não cadastrado"})
-               return
+               return res.status(404).json({msg: "Cliente não cadastrado"})
            }
            res.json(response)
        } catch (error) {
@@ -59,7 +57,10 @@ const clienteController = {
    readAll: async(req, res) => {
        try {
            const response = await ClienteModel.find()
-           res.json(response)
+           if(!response[0]){
+               return res.json({msg: "Lista de clientes vaizia"})
+           }
+            res.json(response)
        } catch (error) {
            console.log(error)
        }
@@ -67,35 +68,36 @@ const clienteController = {
     
     create: async(req, res) => { 
         try {
-            const cliente = {
-                codigo : req.body.codigo,
-                nome: req.body.nome,
-                sobrenome: req.body.sobrenome,
-                cpf: req.body.cpf,
+
+            const error = []
+            if(!req.body.nome) error.push({msg : "O campo NOME é obrigatório"})
+            if(!req.body.sobrenome) error.push({msg: "O campo SOBRENOME é obrigatório"})
+            if(!req.body.cpf) error.push({msg: "O campo CPF é obrigatório"})
+            if(!req.file) error.push({msg: "O campo FOTO é obrigatorio"})
+            if(!req.body.endereco) error.push({msg: "O campo ENDEREÇO é obrigatório"})
+            if(!req.body.cidade) error.push({msg: "O campo CIDADE é obrigatório"})
+            if(!req.body.estado) error.push({msg: "O campo ESTADO é obrigatório"})
+            if(!req.body.cartao) error.push({msg: "O campo CARTÃO é obrigatório"})
+            if(!req.body.email) error.push({msg: "O campo CPF é obrigatório"})
+            if(!req.body.senha)error.push({msg: "O campo SENHA é obrigatório"})
+            if(await ClienteModel.findOne({ 'email': req.body.email })) error.push({ msg: 'Cliente já cadastrado!' })
+            if(error[0]) return res.status(400).json(error)
+
+            const cliente = {  
+                codigo : req.body.codigo, nome: req.body.nome, sobrenome: req.body.sobrenome, cpf: req.body.cpf,
                 foto: {
                     data: fs.readFileSync(path.join(__dirname + './../uploads/' + req.file.filename)),
                     contentType: 'image/png'
-                },
-                endereco: req.body.endereco,
-                cidade: req.body.cidade,
-                estado: req.body.estado,
-                cartao: req.body.cartao,
-                email: req.body.email,
-                senha: req.body.senha
+                }, 
+                endereco: req.body.endereco, cidade: req.body.cidade, estado: req.body.estado,
+                cartao: req.body.cartao, email: req.body.email, senha: req.body.senha
             }
-            
+
             const max = await ClienteModel.findOne({}).sort({ codigo: -1 });
             cliente.codigo = max == null ? 1 : max.codigo + 1;
-
-            if(!cliente.nome){
-                return res.status(422).json({msg: "O campo código é obrigatório"})
-            }
-
-            if (await ClienteModel.findOne({ 'email': cliente.email })) {
-                res.status(400).send({ msg: 'Cliente já cadastrado!' });
-            }
             
             const response = await ClienteModel.create(cliente)
+            auth.incluirToken(response)
             res.status(201).json({response, msg: "Cliente cadastrado com sucesso"})
         } catch (error) {
             console.log(error)

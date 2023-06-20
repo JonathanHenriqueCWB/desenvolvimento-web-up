@@ -19,6 +19,7 @@ const clienteSchema = new Schema({
     cartao: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     senha: {type: String, required: true},
+    token: {type: String, select: false}
 
 }, {timestamps: true})
 
