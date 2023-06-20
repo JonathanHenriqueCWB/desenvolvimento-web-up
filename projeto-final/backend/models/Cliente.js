@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
+const bcryptjs = require('bcryptjs');
 
 const clienteSchema = new Schema({
     codigo : {type: Number, required: true, unique: true},
@@ -20,6 +21,13 @@ const clienteSchema = new Schema({
     senha: {type: String, required: true},
 
 }, {timestamps: true})
+
+// bcryptjs criar hash da senha para salvar no banco de dados
+clienteSchema.pre('save', async function (next) {
+    const hash = await bcryptjs.hash(this.senha, 10);
+    this.senha = hash;
+    next();
+});
 
 const Cliente = mongoose.model('Cliente', clienteSchema)
 module.exports = {

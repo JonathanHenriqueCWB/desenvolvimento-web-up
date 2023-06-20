@@ -1,11 +1,11 @@
-const {Cliente : ClienteController} = require('../models/Cliente')
+const {Cliente : ClienteModel} = require('../models/Cliente')
 var fs = require('fs');
 var path = require('path');
 
 const clienteController = {
    update: async(req, res) => {
        try {
-           const response = await ClienteController.findById(req.body._id).then(cliente => {        
+           const response = await ClienteModel.findById(req.body._id).then(cliente => {        
             cliente.codigo = req.body.codigo,
             cliente.foto =req.body.foto,
             cliente.nome = req.body.nome,
@@ -30,12 +30,13 @@ const clienteController = {
 
    delete: async(req, res) => {
        try {
-           const response = await ClienteController.findById(req.params.id)
+           const response = await ClienteModel.findById(req.params.id)
            if(!response){
-               res.status(404).json({msg: "Cliente não encontrado"})
+                console.log(response)
+               res.status(404).json({msg: "Cliente não existe"})
                return
            }
-           const deleteResponse = await ClienteController.findByIdAndDelete({_id: req.params.id})
+           const deleteResponse = await ClienteModel.findByIdAndDelete({_id: req.params.id})
            res.status(200).json({deleteResponse, msg: "Cliente removido com sucesso"})
        } catch (error) {
            console.log(error)
@@ -44,9 +45,9 @@ const clienteController = {
    
     read: async(req, res) => {
        try {
-           const response = await ClienteController.find({codigo: req.params.codigo})
-           if(!response){
-               res.status(404).json({msg: "Erro a encontrar cliente"})
+           const response = await ClienteModel.find({codigo: req.params.codigo})
+           if(!response[0]){
+               res.status(404).json({msg: "Cliente não cadastrado"})
                return
            }
            res.json(response)
@@ -57,7 +58,7 @@ const clienteController = {
    
    readAll: async(req, res) => {
        try {
-           const response = await ClienteController.find()
+           const response = await ClienteModel.find()
            res.json(response)
        } catch (error) {
            console.log(error)
@@ -83,7 +84,18 @@ const clienteController = {
                 senha: req.body.senha
             }
             
-            const response = await ClienteController.create(cliente)
+            const max = await ClienteModel.findOne({}).sort({ codigo: -1 });
+            cliente.codigo = max == null ? 1 : max.codigo + 1;
+
+            if(!cliente.nome){
+                return res.status(422).json({msg: "O campo código é obrigatório"})
+            }
+
+            if (await ClienteModel.findOne({ 'email': cliente.email })) {
+                res.status(400).send({ msg: 'Cliente já cadastrado!' });
+            }
+            
+            const response = await ClienteModel.create(cliente)
             res.status(201).json({response, msg: "Cliente cadastrado com sucesso"})
         } catch (error) {
             console.log(error)
