@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from 'react-bootstrap/Button';
+import Nav from 'react-bootstrap/Nav';
 
 const Cards = props => {
 
@@ -17,7 +18,7 @@ const Cards = props => {
     return (
         <CardGroup>
             {props.produtos.map(f =>                    
-                <Card style={{minWidth: '300px', maxWidth: "300px", margin: '10px', border: '3px solid green', textAlign: 'center', color: "green" }}>
+                <Card key={f.codigo} style={props.estilo}>
                     <Card.Img variant="top" src={`data:image/jpeg;base64,${_arrayBufferToBase64(f.foto.data.data)}`} style={{ height: '300px' }} />
                     <Card.Body>
                         <Card.Title>{f.nome}</Card.Title>
@@ -25,7 +26,9 @@ const Cards = props => {
                         <Card.Text>{f.descricao}</Card.Text>
                         <Card.Text>{f.preco}</Card.Text>
                         <Card.Text>{f.animal}</Card.Text>
-                        <Button variant="success">Adicionar ao carrinho</Button>
+                        <Button variant="success">
+                            <Nav.Link href={`/detalhes/${f.codigo}`}>Active</Nav.Link>
+                        </Button>
                     </Card.Body>
                     <Card.Footer>
                         <small className="text-muted">Last updated 3 mins ago</small>

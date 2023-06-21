@@ -1,10 +1,10 @@
 // Componentes
-import Produtos from '../components/Produtos'
+import HomeProdutos from '../components/home/Home'
 
 const Home = props => {
     return(
         <>
-            <Produtos />
+            <HomeProdutos />
         </>
     )
 }
