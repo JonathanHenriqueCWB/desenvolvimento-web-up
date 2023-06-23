@@ -1,4 +1,6 @@
 const PedidoModel = require('../models/Pedido')
+const {Produto: ProdutoModel} = require("../models/Produto")
+const {Cliente: ClienteModel} = require('../models/Cliente')
 var fs = require('fs');
 var path = require('path')
 
@@ -59,19 +61,36 @@ const pedidoController = {
 
     create: async(req, res) => {
         try {
-            const pedido = {
-                codigo: req.body.codigo,
-                preco: req.body.preco,
-                status: req.body.status,
-                cliente: req.body.cliente,
-                produto: req.body.produto,
-                foto: {
-                    data: fs.readFileSync(path.join(__dirname + './../uploads/' + req.file.filename)),
-                    contentType: 'image/png'
+
+            const error = []
+            const cliente = await ClienteModel.findOne({'codigo' : req.body.clienteCodigo})
+            const produto = await ProdutoModel.findOne({'codigo' : req.body.produtoCodigo})            
+            
+            // COCERTAR AS VALIDAÇÕES, ERRO AO VALIDAR O ARRAY DE ERROS
+            /*
+                if(!cliente) error.push({msg: "Cliente não encontrada"})
+                if(!produto) error.push({msg: "Produto não encontrada"})
+                if(!req.body.preco) error.push({msg : "O campo PREÇO é obrigatório"})
+                if(!req.body.status) error.push({msg: "O campo STATUS é obrigatório"})
+
+
+                if(error){
+                    console.log(error)
+                    return res.json({msg: 'Existem erros no formulario', error})          
                 }
+            */
+           
+           const pedido = {
+               preco: req.body.preco, status: req.body.status,
+               cliente: cliente, produto: produto
             }
+            
+            const max = await PedidoModel.findOne({}).sort({ codigo: -1 });
+            pedido.codigo = max == null ? 1 : max.codigo + 1;
+            
             const response = await PedidoModel.create(pedido)
             res.status(201).json({response, msg: "Pedido registrado com sucesso"})
+
         } catch (error) {
             console.log(error)
         }

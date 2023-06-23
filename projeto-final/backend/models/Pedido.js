@@ -6,15 +6,11 @@ const {produtoSchema} = require('./Produto')
 const {clienteSchema} = require('./Cliente')
 
 const pedidosSchema = new Schema({
-    codigo: {type: String},
+    codigo: {type: Number},
     preco: {type: Number},
     status: {type: String},
     cliente : {type: [clienteSchema]},
-    produto: {type: [produtoSchema]},
-    foto: {
-        data: Buffer,
-        contentType: String
-    }
+    produto: {type: [produtoSchema]}
 }, {timestamps: true})
 
 const Pedido = mongoose.model("Pedido", pedidosSchema)

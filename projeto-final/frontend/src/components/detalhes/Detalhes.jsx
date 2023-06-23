@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 const Detalhes = props => {
     const { codigo } = useParams()
     const [produto, setProduto] = useState([])
+    
     const estilo = {
         "minWidth": '300px',
         "maxWidth": "300px",
@@ -23,13 +24,12 @@ const Detalhes = props => {
         .catch(err => console.error(err))
     }, [])
 
-    console.log(codigo)
-    console.log(produto)
-
     return(
         <>
         <Row>
-            <Col><Card produtos={produto} estilo={estilo}/></Col>
+            <Col>
+                <Card produtos={produto} estilo={estilo} rota={'carrinho'}/>
+            </Col>
             <Col>  
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi, 
                 sed! Debitis accusamus earum placeat ad repudiandae doloribus quo nesciunt, 

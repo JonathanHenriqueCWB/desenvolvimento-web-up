@@ -10,13 +10,15 @@ import Routes from './configRoutes'
 
 function App(){
     return(
-        <Router>
-            <Navbar />
-            <Container>
-                <Routes />
-            </Container>
-            <Footer />
-        </Router>
+        <div style={{backgroundColor: '#e6ffe6'}}>
+            <Router>
+                <Navbar />
+                <Container>
+                    <Routes />
+                </Container>
+                <Footer />
+            </Router>
+        </div>
     )
 }
 

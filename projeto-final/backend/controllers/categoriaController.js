@@ -58,10 +58,13 @@ const categoriaController = {
     create: async(req, res) => {
         try {
             const categoria = {
-                codigo: req.body.codigo,
                 nome: req.body.nome,
                 descricao: req.body.descricao
             }
+
+            const max = await CategoriaModel.findOne({}).sort({ codigo: -1 });
+            categoria.codigo = max == null ? 1 : max.codigo + 1;
+
             const response = await CategoriaModel.create(categoria)
             res.status(201).json({response, msg: "Categoria cadastrado com sucesso"})
         } catch (error) {

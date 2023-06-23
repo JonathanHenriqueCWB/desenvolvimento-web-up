@@ -3,7 +3,6 @@ const upload = require('../config/multer')
 const pedidoController = require('../controllers/pedidoController')
 const auth = require('../config/auth')
 
-// Restrição de login
 router.use(auth.autorizar)
 
 router.route('/').get((req, res) => pedidoController.readAll(req, res))

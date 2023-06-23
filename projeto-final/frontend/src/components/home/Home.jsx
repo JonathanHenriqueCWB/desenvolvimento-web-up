@@ -22,7 +22,7 @@ const Produtos = props => {
 
     return (
         <div>
-            <Card produtos={produtos} estilo={estilo}/>
+            <Card produtos={produtos} estilo={estilo} rota={'detalhes'}/>
         </div>
     )
 }

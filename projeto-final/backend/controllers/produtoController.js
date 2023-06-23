@@ -30,8 +30,7 @@ const produtoController = {
        try {
            const response = await ProdutoModel.findById(req.params.id)
            if(!response){
-               res.status(404).json({msg: "Produto não encontrado"})
-               return
+               return res.status(404).json({msg: "Produto não encontrado"})
            }
 
            const deleteResponse = await ProdutoModel.findByIdAndDelete({_id: req.params.id})
@@ -45,8 +44,7 @@ const produtoController = {
        try {
            const response = await ProdutoModel.find({codigo: req.params.codigo})
            if(!response){
-               res.status(404).json({msg: "Produto não encontrado"})
-               return
+               return res.status(404).json({msg: "Produto não encontrado"})
            }
            res.json(response)
        } catch (error) {
@@ -65,34 +63,36 @@ const produtoController = {
 
    create: async(req, res) => {
        try {
-            const categoria = await CategoriaModel.find({codigo: req.body.codigoCategoria})
+            const error = []
+            const categoria = await CategoriaModel.findOne({'codigo': req.body.codigoCategoria})
 
+            /*
+            if(!categoria) error.push({msg: "Categoria não encontrada"})
+            if(!req.body.nome) error.push({msg : "O campo NOME é obrigatório"})
+            if(!req.body.descricao) error.push({msg : "O campo DESCICAO é obrigatório"})
+            if(!req.body.preco) error.push({msg : "O campo PRECO é obrigatório"})
+            if(!req.body.animal) error.push({msg : "O campo ANIMAL é obrigatório"})
+            if(!req.file) error.push({msg: "O campo FOTO é obrigatorio"})
+            if(error[0]) return res.status(400).json(error)
+            */    
+            
             const produto = {
-                codigo: req.body.codigo,
                 nome: req.body.nome,
                 descricao: req.body.descricao,
                 preco: req.body.preco,
-                categoria: categoria,
                 animal: req.body.animal,
+                categoria: categoria,
                 foto: {
                     data: fs.readFileSync(path.join(__dirname + './../uploads/' + req.file.filename)),
                     contentType: 'image/png'
                 }
             }
             
-            // Arrumar
-            /*
-            if(!produto.categoria){
-                res.status(201).json({ msg: "Categoria inexistente"})
-                return
-            }else {
-                res.status(404).json({produto, msg: "Produto salvo com sucesso"})
-                return
-            }
-            */
-
-           const response = await ProdutoModel.create(produto)
-           res.status(201).json({response, msg: "Produto cadastrado com sucesso"})
+            const max = await ProdutoModel.findOne({}).sort({ codigo: -1 });
+            produto.codigo = max == null ? 1 : max.codigo + 1;
+            
+            const response = await ProdutoModel.create(produto)
+            res.status(201).json({response, msg: "Produto cadastrado com sucesso"})
 
        } catch (error) {
            console.log(error)

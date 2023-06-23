@@ -12,7 +12,6 @@ async function incluirToken(cliente) {
     cliente.senha = undefined
 }
 
-
 async function gerarHash(usuario) {
     if (typeof usuario.senha !== 'undefined') {
       const hash = await bcryptjs.hash(usuario.senha, 10);
@@ -55,8 +54,18 @@ async function gerarHash(usuario) {
     autorizar
   };
 
-  // Criar o arquivo auth.js e app.js
-  // chamar o auth.incluirToken(cliente) no clienteController
-  // Chamar o auth.incluirToken(cliente) no loginController
-  // Restringir as rotas, pedidoRoute router.use(auth.autorizar)
+  // Utilização do JWT - BACKEND
+    // Crie um arquivo auth.js con toda configuração de criação do token
+    // Crie um a rota de login e seu controller
+    // Ajuste a schema/model para trabalhar com token (apena um campo token)
+    // Criar secret no .env
+
+  // AJUSTES
+    // no cliente controller chame o auth.incluirToken (no create)
+    // no login controller chamar o auth.incluirToken
   
+// APOS AS ETAPAS ACIMA BASTA RETRINGIR AS ROTAS QUE QUEIRA RESTRINGIR A LOGIN
+
+// OBS antes de salvar na model o senha esta sendo cripto com bcryptjs
+// na controller login será necessario a utilzaão do mesmo para descript senha
+

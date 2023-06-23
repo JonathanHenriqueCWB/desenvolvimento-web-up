@@ -19,7 +19,7 @@ const Cards = props => {
         <CardGroup>
             {props.produtos.map(f =>                    
                 <Card key={f.codigo} style={props.estilo}>
-                    <Card.Img variant="top" src={`data:image/jpeg;base64,${_arrayBufferToBase64(f.foto.data.data)}`} style={{ height: '300px' }} />
+                    <Card.Img variant="top" src={`data:image/jpeg;base64,${_arrayBufferToBase64(f.foto.data.data)}`} style={{ height: '250px' }} />
                     <Card.Body>
                         <Card.Title>{f.nome}</Card.Title>
                         <Card.Text>{f.codigo}</Card.Text>
@@ -27,7 +27,7 @@ const Cards = props => {
                         <Card.Text>{f.preco}</Card.Text>
                         <Card.Text>{f.animal}</Card.Text>
                         <Button variant="success">
-                            <Nav.Link href={`/detalhes/${f.codigo}`}>Active</Nav.Link>
+                            <Nav.Link href={`/${props.rota}/${f.codigo}`}>Active</Nav.Link>
                         </Button>
                     </Card.Body>
                     <Card.Footer>

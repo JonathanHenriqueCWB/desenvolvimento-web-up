@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 
 function Footer() {
   return (
-    <Card className="text-center" style={{marginTop: "50px", color: "green"}}>
+    <Card className="text-center" bg="success">
       <Card.Header>Featured</Card.Header>
       <Card.Body>
         <Card.Title>Special title treatment</Card.Title>
