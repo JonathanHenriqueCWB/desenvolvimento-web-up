@@ -7,8 +7,8 @@ const Produtos = props => {
     const estilo = {
         "minWidth": '300px',
         "maxWidth": "300px",
-        "margin": '10px',
-        "border": '3px solid green',
+        "border": '1px solid green',
+        'marginbottom' : '50px',
         "textAlign": 'center',
         "color": "green" 
     }

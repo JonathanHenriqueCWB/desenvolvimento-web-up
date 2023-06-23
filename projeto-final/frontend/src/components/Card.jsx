@@ -22,10 +22,8 @@ const Cards = props => {
                     <Card.Img variant="top" src={`data:image/jpeg;base64,${_arrayBufferToBase64(f.foto.data.data)}`} style={{ height: '250px' }} />
                     <Card.Body>
                         <Card.Title>{f.nome}</Card.Title>
-                        <Card.Text>{f.codigo}</Card.Text>
                         <Card.Text>{f.descricao}</Card.Text>
                         <Card.Text>{f.preco}</Card.Text>
-                        <Card.Text>{f.animal}</Card.Text>
                         <Button variant="success">
                             <Nav.Link href={`/${props.rota}/${f.codigo}`}>{props.label}</Nav.Link>
                         </Button>
