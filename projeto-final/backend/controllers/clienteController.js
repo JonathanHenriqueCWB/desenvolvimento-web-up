@@ -69,26 +69,30 @@ const clienteController = {
     create: async(req, res) => { 
         try {
 
-            const error = []
-            if(!req.body.nome) error.push({msg : "O campo NOME é obrigatório"})
-            if(!req.body.sobrenome) error.push({msg: "O campo SOBRENOME é obrigatório"})
-            if(!req.body.cpf) error.push({msg: "O campo CPF é obrigatório"})
-            if(!req.file) error.push({msg: "O campo FOTO é obrigatorio"})
-            if(!req.body.endereco) error.push({msg: "O campo ENDEREÇO é obrigatório"})
-            if(!req.body.cidade) error.push({msg: "O campo CIDADE é obrigatório"})
-            if(!req.body.estado) error.push({msg: "O campo ESTADO é obrigatório"})
-            if(!req.body.cartao) error.push({msg: "O campo CARTÃO é obrigatório"})
-            if(!req.body.email) error.push({msg: "O campo CPF é obrigatório"})
-            if(!req.body.senha)error.push({msg: "O campo SENHA é obrigatório"})
-            if(await ClienteModel.findOne({ 'email': req.body.email })) error.push({ msg: 'Cliente já cadastrado!' })
-            if(error[0]) return res.status(400).json(error)
+            return console.log(req.body.foto)
+
+            /*
+                const error = []
+                if(!req.body.nome) error.push({msg : "O campo NOME é obrigatório"})
+                if(!req.body.sobrenome) error.push({msg: "O campo SOBRENOME é obrigatório"})
+                if(!req.body.cpf) error.push({msg: "O campo CPF é obrigatório"})
+                if(!req.file) error.push({msg: "O campo FOTO é obrigatorio"})
+                if(!req.body.endereco) error.push({msg: "O campo ENDEREÇO é obrigatório"})
+                if(!req.body.cidade) error.push({msg: "O campo CIDADE é obrigatório"})
+                if(!req.body.estado) error.push({msg: "O campo ESTADO é obrigatório"})
+                if(!req.body.cartao) error.push({msg: "O campo CARTÃO é obrigatório"})
+                if(!req.body.email) error.push({msg: "O campo CPF é obrigatório"})
+                if(!req.body.senha)error.push({msg: "O campo SENHA é obrigatório"})
+                if(await ClienteModel.findOne({ 'email': req.body.email })) error.push({ msg: 'Cliente já cadastrado!' })
+                if(error[0]) return res.status(400).json(error)
+            */
 
             const cliente = {  
                 codigo : req.body.codigo, nome: req.body.nome, sobrenome: req.body.sobrenome, cpf: req.body.cpf,
                 foto: {
                     data: fs.readFileSync(path.join(__dirname + './../uploads/' + req.file.filename)),
                     contentType: 'image/png'
-                }, 
+                },
                 endereco: req.body.endereco, cidade: req.body.cidade, estado: req.body.estado,
                 cartao: req.body.cartao, email: req.body.email, senha: req.body.senha
             }
@@ -96,9 +100,9 @@ const clienteController = {
             const max = await ClienteModel.findOne({}).sort({ codigo: -1 });
             cliente.codigo = max == null ? 1 : max.codigo + 1;
             
-            const response = await ClienteModel.create(cliente)
-            auth.incluirToken(response)
-            res.status(201).json({response, msg: "Cliente cadastrado com sucesso"})
+            // const response = await ClienteModel.create(cliente)
+            // auth.incluirToken(response)
+            res.status(201).json({cliente, msg: "Cliente cadastrado com sucesso"})
         } catch (error) {
             console.log(error)
         }

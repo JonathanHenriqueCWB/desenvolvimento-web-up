@@ -4,24 +4,67 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
 import {useState} from 'react'
+import api from '../../services/api'
+import { useNavigate } from "react-router-dom";
 
 const Cliente = props => {
+
+    const navigate = useNavigate();
 
     // Controlando os estados do formulario
     const [nome, setNome] = useState('')
     const [sobrenome, setSobrenome] = useState('')
     const [cpf, setCpf] = useState('')
+    const [foto, setFoto] = useState('')
+
     const [cartao, setCartao] = useState('')
     const [cidade, setCidade] = useState('')
     const [estado, setEstado] = useState('')
     const [endereco, setEndereco] = useState('')
     const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
+    const [senha, setSenha] = useState('')    
+
+    // Teste file upload
+    function handleImage(e){
+        console.log(e.target.files[0])
+        setFoto(e.target.files[0])
+    }
+
+    // Objeto que sera mandado na reques
+    const bodyParam = {
+        nome: nome, sobrenome: sobrenome, cpf: cpf, foto: foto, cartao: cartao,
+        cartao: cartao, cidade: cidade, estado: estado, endereco: endereco,
+        email: email, senha: senha
+    }
+
+    
+    // REQUEST AO SERVIDOR COM AXIOS
+    function handleSubmit(event) {
+
+        event.preventDefault();
+
+        console.log('Fronte ende. Formulario disparado com sucesso')
+        console.log(bodyParam)
+
+        api.post('/api/cliente/create', bodyParam).then((response) => {
+            console.log(response.data)
+            alert(" Token gerado para o usuario " + response.data.nome)
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem('pessoa', JSON.stringify(response.data));
+            navigate("/");
+        }).catch((err) => {
+            console.error(err.response.data) // Objeto de erro vindo do axios
+            alert(" Ocorreu um erro! " + err.response.data.error)
+        }).finally(() => {
+            setEmail("")
+            setSenha("")
+        })
+    }
 
 
     return (
         <>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridNome">
                         <Form.Label>Nome</Form.Label>
@@ -39,6 +82,11 @@ const Cliente = props => {
                         <Form.Label>CPF</Form.Label>
                         <Form.Control type="text" value={cpf} onChange={e => setCpf(e.target.value)} placeholder="CPF" />
                         <span>testCpf: {cpf}</span>
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formFile">
+                        <Form.Label>Foto</Form.Label>
+                        <Form.Control type="file" onChange={e => setFoto(e.target.files[0])}/>
                     </Form.Group>
                 </Row>
 
