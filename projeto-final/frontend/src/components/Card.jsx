@@ -27,7 +27,7 @@ const Cards = props => {
                         <Card.Text>{f.preco}</Card.Text>
                         <Card.Text>{f.animal}</Card.Text>
                         <Button variant="success">
-                            <Nav.Link href={`/${props.rota}/${f.codigo}`}>Active</Nav.Link>
+                            <Nav.Link href={`/${props.rota}/${f.codigo}`}>{props.label}</Nav.Link>
                         </Button>
                     </Card.Body>
                     <Card.Footer>

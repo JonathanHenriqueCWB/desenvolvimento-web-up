@@ -10,6 +10,8 @@ import Usuario from './pages/usuario'
 
 export default function ConfigRoutes(){
     return (
+        <div style={{minHeight: '68vh'}}>
+
         <Routes>
           <Route path='/' element={<Home></Home>}/>
           <Route path='/detalhes/:codigo' element={<Detalhes></Detalhes>}/>
@@ -18,6 +20,7 @@ export default function ConfigRoutes(){
           <Route path='/usuario' element={<Usuario></Usuario>} />
           <Route path='*' element={<h1>Página Não Encontrada!</h1>} />
         </Routes>
+        </div>
     )
 }
 // FLUXO DO PROGRAMA
